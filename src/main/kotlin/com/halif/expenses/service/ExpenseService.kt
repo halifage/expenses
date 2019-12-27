@@ -18,33 +18,11 @@ class ExpenseService(
 ) {
 	private val expenseEntityDtoMapper = ExpenseEntityDtoMapper()
 
-	fun fetchAllExpenses(): List<ExpenseDto> {
-		return expenseEntityDtoMapper.toDtos(expenseRepository.findAll().toList())
-	}
+
+	fun fetchAllExpenses(): List<ExpenseDto> = expenseEntityDtoMapper.toDtos(expenseRepository.findAll().toList())
 
 	@Transactional
-	fun addExpenses() {
-		val expenseDtos = mutableListOf<ExpenseDto>()
-		expenseDtos.addAll(
-			listOf(
-				ExpenseDto(
-					amount = 100.50,
-					expenseTypeId = 6,
-					date = LocalDateTime.now().withSecond(0).withNano(0),
-					description = "Rented movies"
-				),
-				ExpenseDto(
-					amount = 300.50,
-					expenseTypeId = 6,
-					date = LocalDateTime.now().withSecond(0).withNano(0),
-					description = "Rented movies"
-				)
-			)
-		)
-
-		val entities = expenseEntityDtoMapper.toEntities(expenseDtos)
-		expenseRepository.saveAll(entities)
-	}
+	fun addExpenses(expenses: List<ExpenseDto>): List<Int> = expenseRepository.saveAll(expenseEntityDtoMapper.toEntities(expenses)).map { it.id!! }
 
 }
 

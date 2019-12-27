@@ -7,6 +7,7 @@ import com.halif.expenses.util.Routes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -18,6 +19,6 @@ class ExpenseController(
 	@GetMapping(Routes.FETCH_ALL_EXPENSES)
 	fun fetchAllExpenses(): List<ExpenseDto> = expenseService.fetchAllExpenses()
 
-	@PostMapping(Routes.ADD_EXPENSE)
-	fun addExpenses() = expenseService.addExpenses()
+	@PostMapping(Routes.ADD_EXPENSES)
+	fun addExpenses(@RequestBody(required = true) expenses: List<ExpenseDto>): List<Int> = expenseService.addExpenses(expenses)
 }

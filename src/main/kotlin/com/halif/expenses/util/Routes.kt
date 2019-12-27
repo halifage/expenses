@@ -5,7 +5,6 @@ object Routes {
 	//Expense Controller
 	const val DELETE_EXPENSE = "/api/expenses/{expenseId}"
 	const val UPDATE_EXPENSE = "/api/expenses/{expenseId}"
-	const val ADD_EXPENSE = "/api/expenses"
 	const val ADD_EXPENSES = "/api/expenses"
 	const val FETCH_ALL_EXPENSES = "/api/expenses"
 	const val FETCH_EXPENSES_BY_DATE = "/api/expenses/expenses-by-date"
