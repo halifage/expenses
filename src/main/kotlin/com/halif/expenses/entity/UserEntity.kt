@@ -13,7 +13,7 @@ data class UserEntity (
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	val id: Int,
+	val id: Int? = null,
 
 	val firstName: String,
 
