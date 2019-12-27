@@ -13,7 +13,7 @@ data class ExpenseTypeEntity(
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	val id: Int,
+	val id: Int? = null,
 
 	val description: String
 ): BaseEntity
