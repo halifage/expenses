@@ -1,11 +1,12 @@
 spring:
-  datasource:
-    url: jdbc:sqlserver://${db_host};databaseName=Expenses
-    username: ${db_username}
-    password: ${db_password}
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+  datasource:
+    jdbc-url: jdbc:sqlserver://${db_host};databaseName=Expenses
+    username: ${db_username}
+    password: ${db_password}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver

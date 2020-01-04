@@ -9,7 +9,7 @@ data class ExpenseDto (
 	val id: Int? = null,
 	val amount: Double,
 	val date: LocalDateTime?,
-	val userId: Int? = null,
 	val expenseTypeId: Int,
+	val budgetId: Int?,
 	val description: String? = null
 ): BaseDto

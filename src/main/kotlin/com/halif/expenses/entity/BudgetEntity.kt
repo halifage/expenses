@@ -1,7 +1,7 @@
 package com.halif.expenses.entity
 
 import com.halif.expenses.common.BaseEntity
-import java.time.LocalDateTime
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -11,23 +11,22 @@ import javax.persistence.JoinColumn
 import javax.persistence.Table
 
 @Entity
-@Table(name = "Expenses")
-data class ExpenseEntity(
-
+@Table(name = "Budgets")
+data class BudgetEntity (
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	val id: Int? = null,
 
 	val amount: Double,
 
-	@JoinColumn(name = "ExpenseTypeId", referencedColumnName = "Id")
-	val expenseTypeId: Int,
+	@JoinColumn(name = "UserId", referencedColumnName = "Id")
+	val userId: Int? = null,
 
-	@JoinColumn(name = "BudgetId", referencedColumnName = "Id")
-	val budgetId: Int?,
+	@Column(name = "DateFrom")
+	val dateFrom: LocalDate? = null,
 
-	@Column(name = "ExpenseDate")
-	val date: LocalDateTime? = null,
+	@Column(name = "DateTo")
+	val dateTo: LocalDate? = null,
 
-	val description: String? = null
+	val name: String? = null
 ) : BaseEntity
